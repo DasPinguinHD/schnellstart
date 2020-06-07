@@ -52,21 +52,23 @@ while l == 1:
     print("(3) Deauthentifiziere ein bestimmtest WLAN per BSSID und aireplay ")
     print("(4) Schalte WLAN0mon zurück in den Manager-Modus")
     print("(5) Schnappe dir einen WPA-Handshake durch airodump (stealth Y/N?)")
-    print("(6) Führe Hashcat aus, um die Dateien aus Tool 5 zu knacken" + bcolors.ENDC )
+    print("(6) Führe Hashcat aus, um die Dateien aus Tool 5 zu knacken")
+    print("(7) Aufräumen" + bcolors.ENDC)
     try:
         varcmd = input("Gib eine Zahl ein oder drücke Ctrl + C ein, um zu beenden : ")
 
-        print("Du hast eingegeben: ") 
+        print("Du hast eingegeben: ")
+        print(" " + bcolors.OKBLUE)
         print(varcmd)
-        if varcmd > 6:
-            print("Eine gültige Zahl eingeben!")
+        if varcmd > 7:
+            print(bcolors.ENDC + "Eine gültige Zahl eingeben!")
         elif varcmd == 0:
             os.system('apt-get update && apt-get upgrade')
             os.system('apt-get install python')
             os.system('apt-get install figlet toilet')
 
         elif varcmd == 1:
-            airmoncmd = raw_input("Gib ein" + bcolors.OKGREEN + " WLAN-Interface" + bcolors.ENDC + " ein: ")
+            airmoncmd = raw_input(bcolors.ENDC + "Gib ein" + bcolors.OKGREEN + " WLAN-Interface" + bcolors.ENDC + " ein: ")
             chamoncmd = raw_input("Gib einen" + bcolors.OKGREEN + " Kanal 1-16" + bcolors.ENDC + " ein: ")
             os.system('airmon-ng start ' + airmoncmd +" " + chamoncmd)
         elif varcmd == 2:
@@ -95,14 +97,14 @@ while l == 1:
         elif varcmd == 6:
             os.system("sudo hashcat --help")
         elif varcmd == 7:
-            os.sys
+            os.system("clear")
 
     except NameError:
-        print(bcolors.Fail + "Nicht gültiger Eingabewert. Erneut versuchen" + bcolors.ENDC)
+        print(bcolors.FAIL + "Nicht gültiger Eingabewert. Erneut versuchen" + bcolors.ENDC)
     except KeyboardInterrupt:
         print(" ")
         print(bcolors.FAIL + "KeyboardInterrupt" + bcolors.ENDC + " vom Benutzer. Es wird beendet...")
         exit()
     except:
-        print(bcolors.FAIL + "Beenden, da vermutlich ein Fehler aufgetreten ist. Falls mit Ctrl + D beendet wurde, ist zu bemerken, dass das Beenden mit Ctrl + C bevorzugt ist")
+        print(bcolors.FAIL + "Beenden, da vermutlich ein Fehler aufgetreten ist. Falls mit Ctrl + D beendet wurde, ist zu bemerken, dass das Beenden mit Ctrl + C bevorzugt ist" + bcolors.ENDC)
         exit()
